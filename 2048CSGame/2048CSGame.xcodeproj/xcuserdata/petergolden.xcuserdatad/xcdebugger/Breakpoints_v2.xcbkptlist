@@ -9,12 +9,14 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "2048CSGame/GameViewController.h"
-            timestampString = "570850804.760343"
+            filePath = "2048CSGame/GameViewController.m"
+            timestampString = "571162494.275409"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "16"
-            endingLineNumber = "16">
+            startingLineNumber = "44"
+            endingLineNumber = "44"
+            landmarkName = "-supportedInterfaceOrientations"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

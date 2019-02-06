@@ -6,15 +6,12 @@
 //  Copyright © 2019 Peter Golden. All rights reserved.
 //
 
-//#ifndef MainViewController_h
-//#define MainViewController_h
-
 #import <UIKit/UIKit.h>
 #import <SpriteKit/SpriteKit.h>
 #import <GameplayKit/GameplayKit.h>
 
 @interface MainViewController : UIViewController
 
-@end
+@property (nonatomic, strong) IBOutlet UIButton *easy, *hard;
 
-//#endif /* MainViewController_h */
+@end

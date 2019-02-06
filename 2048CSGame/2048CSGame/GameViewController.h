@@ -12,4 +12,17 @@
 
 @interface GameViewController : UIViewController
 
+@property (nonatomic, strong) IBOutlet UIButton* left, *right, *up, *down;
+
+@property (nonatomic) NSArray* arrIndexes;
+@property (nonatomic, strong) UIImageView* boxes;
+@property (nonatomic, strong) UIImage* easyMode;
+@property (nonatomic, strong) UIImage* hardMode;
+
+- (void) collapseBlocks: (int) direction;
+- (IBAction) pressLeft: (UIButton*) sender;
+- (IBAction) pressDown: (UIButton*) sender;
+- (IBAction) pressUp: (UIButton*) sender;
+- (IBAction) pressRight: (UIButton*) sender;
+
 @end
