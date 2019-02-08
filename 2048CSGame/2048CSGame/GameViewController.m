@@ -15,17 +15,49 @@
 
 
 
+
 -(id) init{
     self = [super init];
     if(self){
 
-      //
         NSArray* leftarr = [NSArray arrayWithObjects: @0, @1, @2, @3, nil];
         NSArray* downarr = [NSArray arrayWithObjects: @3, @2, @1, @0, nil];
         NSArray* uparr = [NSArray arrayWithObjects: @0, @4, @8, @12, nil];
         NSArray* rightarr = [NSArray arrayWithObjects: @12, @8, @4, @0, nil];
-        
+
         _arrIndexes = [NSArray arrayWithObjects: leftarr, downarr, uparr, rightarr, nil];
+        
+        
+        _easyMode = [NSArray arrayWithObjects:
+                [UIImage imageNamed:@"110williams"],
+                [UIImage imageNamed:@"120madden"],
+                [UIImage imageNamed:@"140lander"],
+                [UIImage imageNamed:@"220prakash"],
+                [UIImage imageNamed:@"240moore"],
+                [UIImage imageNamed:@"301weinsc"],
+                [UIImage imageNamed:@"320dmitri"],
+                [UIImage imageNamed:@"350lewis"],
+                [UIImage imageNamed:@"373"],
+                [UIImage imageNamed:@"375lyu"],
+                [UIImage imageNamed:@"471head"],
+                nil];
+        
+        _hardMode = [NSArray arrayWithObjects:
+                [UIImage imageNamed:@"101foreman"],
+                [UIImage imageNamed:@"110williams"],
+                [UIImage imageNamed:@"120moore"],
+                [UIImage imageNamed:@"140lander"],
+                [UIImage imageNamed:@"220prakash"],
+                [UIImage imageNamed:@"240lewis"],
+                [UIImage imageNamed:@"301weinsc"],
+                [UIImage imageNamed:@"320dmitri"],
+                [UIImage imageNamed:@"350kartrik"],
+                [UIImage imageNamed:@"373"],
+                [UIImage imageNamed:@"375lyu"],
+                [UIImage imageNamed:@"471head"],
+                [UIImage imageNamed:@"441Madden"],
+                     nil];
+        
     }
     return self;
 }

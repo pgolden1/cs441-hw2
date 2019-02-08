@@ -15,9 +15,9 @@
 @property (nonatomic, strong) IBOutlet UIButton* left, *right, *up, *down;
 
 @property (nonatomic) NSArray* arrIndexes;
-@property (nonatomic, strong) UIImageView* boxes;
-@property (nonatomic, strong) UIImage* easyMode;
-@property (nonatomic, strong) UIImage* hardMode;
+@property (nonatomic, strong) NSArray* boxes;
+@property (nonatomic, strong) NSArray* easyMode;
+@property (nonatomic, strong) NSArray* hardMode;
 
 - (void) collapseBlocks: (int) direction;
 - (IBAction) pressLeft: (UIButton*) sender;
