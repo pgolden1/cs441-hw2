@@ -19,16 +19,18 @@
     return NO;
 }
 
+
 - (BOOL)prefersStatusBarHidden {
     return YES;
 }
 
-- (IBAction)easyMode:(UIButton *)sender {
-    
+- (IBAction)easyMode:(id)sender {
+    NSLog(@"Pressed easy mode");
 }
 
 - (IBAction)hardMode:(id)sender {
-    
+    NSLog(@"Pressed hard mode");
 }
-
+- (IBAction)pressEasy:(id)sender {
+}
 @end

@@ -10,12 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "2048CSGame/GameViewController.m"
-            timestampString = "571292124.0067821"
+            timestampString = "571443749.58794"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "81"
             endingLineNumber = "81"
-            landmarkName = "-viewDidLoad"
+            landmarkName = "-shouldAutorotate"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -12,6 +12,10 @@
 
 @interface MainViewController : UIViewController
 
-@property (nonatomic, strong) IBOutlet UIButton *easy, *hard;
+@property (nonatomic, strong) IBOutlet UIButton *easy;
+@property (nonatomic, strong) IBOutlet UIButton *hard;
+
+- (IBAction) easyMode: (UIButton*) sender;
+- (IBAction) hardMode: (UIButton*) sender;
 
 @end
