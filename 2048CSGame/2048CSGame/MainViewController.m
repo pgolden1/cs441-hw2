@@ -24,6 +24,9 @@
     return YES;
 }
 
+- (IBAction)easym:(id)sender {
+}
+
 - (IBAction)easyMode:(id)sender {
     NSLog(@"Pressed easy mode");
 }

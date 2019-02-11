@@ -222,7 +222,7 @@
                                     <action selector="kk:" destination="Ttg-JQ-Pt3" eventType="touchUpInside" id="4KO-Z1-hzp"/>
                                     <action selector="pressEasy:" destination="Ttg-JQ-Pt3" eventType="touchUpInside" id="hL7-rt-tKZ"/>
                                     <action selector="test:" destination="Ttg-JQ-Pt3" eventType="touchUpInside" id="5A8-Kl-gYp"/>
-                                    <segue destination="BV1-FR-VrT" kind="show" id="cIt-3c-6DA"/>
+                                    <segue destination="BV1-FR-VrT" kind="show" identifier="EasyMode" id="cIt-3c-6DA"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Instead of playing regular 2048, combining" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wgn-6s-luP">
@@ -288,7 +288,7 @@
                                 <connections>
                                     <action selector="hardMode:" destination="Ttg-JQ-Pt3" eventType="touchUpInside" id="pud-he-Qdy"/>
                                     <action selector="hm:" destination="Ttg-JQ-Pt3" eventType="touchUpInside" id="F8x-o2-gw1"/>
-                                    <segue destination="BV1-FR-VrT" kind="show" id="Xmm-7a-BCC"/>
+                                    <segue destination="BV1-FR-VrT" kind="show" identifier="HardMode" id="Xmm-7a-BCC"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="/* add a scroll view through all the professors */" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kQz-uX-Y2n">
@@ -315,6 +315,6 @@
         <image name="grid" width="818" height="750"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Xmm-7a-BCC"/>
+        <segue reference="cIt-3c-6DA"/>
     </inferredMetricsTieBreakers>
 </document>

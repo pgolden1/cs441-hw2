@@ -14,6 +14,7 @@
 
 @property (nonatomic, strong) IBOutlet UIButton* left, *right, *up, *down;
 
+@property NSNumber* negone;
 @property (weak, nonatomic) IBOutlet UIImageView *uiiv0;
 @property (weak, nonatomic) IBOutlet UIImageView *uiiv1;
 @property (weak, nonatomic) IBOutlet UIImageView *uiiv2;
@@ -32,13 +33,14 @@
 @property (weak, nonatomic) IBOutlet UIImageView *uiiv15;
 @property (weak, nonatomic) IBOutlet UIImageView *uiiv16;
 
+@property (nonatomic, strong) NSMutableArray* values;
 @property (nonatomic, strong) NSArray* boxes;
 @property (nonatomic, strong) NSArray* easyMode;
 @property (nonatomic, strong) NSArray* hardMode;
 
 - (void) collapseBlocks: (int) direction;
 - (void) gameComplete;
-- (void) setImages: (NSInteger[16]) values;
+- (void) setImages;
 - (IBAction) pressLeft: (UIButton*) sender;
 - (IBAction) pressDown: (UIButton*) sender;
 - (IBAction) pressUp: (UIButton*) sender;
