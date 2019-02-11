@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B03020422211C6550034D93E /* Universe.m in Sources */ = {isa = PBXBuildFile; fileRef = B03020412211C6550034D93E /* Universe.m */; };
 		B0A8CAEE2205204E00B21AA5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B0A8CAED2205204E00B21AA5 /* AppDelegate.m */; };
 		B0A8CAF02205204E00B21AA5 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = B0A8CAEF2205204E00B21AA5 /* GameScene.sks */; };
 		B0A8CAF22205204E00B21AA5 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = B0A8CAF12205204E00B21AA5 /* Actions.sks */; };
@@ -39,6 +40,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B03020402211C6550034D93E /* Universe.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Universe.h; sourceTree = "<group>"; };
+		B03020412211C6550034D93E /* Universe.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Universe.m; sourceTree = "<group>"; };
 		B0A8CAE92205204E00B21AA5 /* 2048CSGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 2048CSGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0A8CAEC2205204E00B21AA5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B0A8CAED2205204E00B21AA5 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -119,6 +122,8 @@
 				B0A8CAF42205204E00B21AA5 /* GameScene.m */,
 				B0A8CAF62205204E00B21AA5 /* GameViewController.h */,
 				B0A8CAF72205204E00B21AA5 /* GameViewController.m */,
+				B03020402211C6550034D93E /* Universe.h */,
+				B03020412211C6550034D93E /* Universe.m */,
 				B0A8CB2522067DC200B21AA5 /* MainViewController.h */,
 				B0A8CB2622067E0700B21AA5 /* MainViewController.m */,
 				B0A8CAF92205204E00B21AA5 /* Main.storyboard */,
@@ -284,6 +289,7 @@
 				B0A8CAF82205204E00B21AA5 /* GameViewController.m in Sources */,
 				B0A8CB032205204E00B21AA5 /* main.m in Sources */,
 				B0A8CB2722067E0700B21AA5 /* MainViewController.m in Sources */,
+				B03020422211C6550034D93E /* Universe.m in Sources */,
 				B0A8CAEE2205204E00B21AA5 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

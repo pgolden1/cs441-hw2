@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <SpriteKit/SpriteKit.h>
 #import <GameplayKit/GameplayKit.h>
+#import "Universe.h"
 
 @interface GameViewController : UIViewController
 
@@ -37,6 +38,7 @@
 @property (nonatomic, strong) NSArray* boxes;
 @property (nonatomic, strong) NSArray* easyMode;
 @property (nonatomic, strong) NSArray* hardMode;
+@property (nonatomic, strong) NSMutableArray* currentMode;
 
 - (void) collapseBlocks: (int) direction;
 - (void) gameComplete;

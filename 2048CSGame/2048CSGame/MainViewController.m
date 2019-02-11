@@ -13,6 +13,7 @@
 
 - (void) viewDidLoad{
     [super viewDidLoad];
+    [[Universe alloc] init];
 }
 
 - (BOOL)shouldAutorotate {
@@ -27,12 +28,19 @@
 - (IBAction)easym:(id)sender {
 }
 
+- (IBAction)em:(id)sender {
+}
+
 - (IBAction)easyMode:(id)sender {
-    NSLog(@"Pressed easy mode");
+    Universe *u = [Universe getSingleton];
+    [u setMagicNumber:0];
+    [self performSegueWithIdentifier:@"goToGame" sender:self];
 }
 
 - (IBAction)hardMode:(id)sender {
-    NSLog(@"Pressed hard mode");
+    Universe *u = [Universe getSingleton];
+    [u setMagicNumber:1];
+    [self performSegueWithIdentifier:@"goToGame" sender:self];
 }
 - (IBAction)pressEasy:(id)sender {
 }

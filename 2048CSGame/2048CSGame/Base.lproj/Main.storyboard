@@ -196,10 +196,10 @@
             </objects>
             <point key="canvasLocation" x="730.43478260869574" y="5.3571428571428568"/>
         </scene>
-        <!--View Controller-->
+        <!--Main View Controller-->
         <scene sceneID="2wo-I1-TBW">
             <objects>
-                <viewController id="4yI-wh-6Yt" sceneMemberID="viewController">
+                <viewController id="4yI-wh-6Yt" customClass="MainViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="w7t-vx-hwT">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -217,12 +217,7 @@
                                 <accessibility key="accessibilityConfiguration" identifier="EasyMode" label="EasyMode"/>
                                 <state key="normal" title="I want the regular version!"/>
                                 <connections>
-                                    <action selector="easyMode:" destination="Ttg-JQ-Pt3" eventType="touchUpInside" id="rp3-yG-YGY"/>
-                                    <action selector="em:" destination="Ttg-JQ-Pt3" eventType="touchUpInside" id="098-Ro-W8U"/>
-                                    <action selector="kk:" destination="Ttg-JQ-Pt3" eventType="touchUpInside" id="4KO-Z1-hzp"/>
-                                    <action selector="pressEasy:" destination="Ttg-JQ-Pt3" eventType="touchUpInside" id="hL7-rt-tKZ"/>
-                                    <action selector="test:" destination="Ttg-JQ-Pt3" eventType="touchUpInside" id="5A8-Kl-gYp"/>
-                                    <segue destination="BV1-FR-VrT" kind="show" identifier="EasyMode" id="cIt-3c-6DA"/>
+                                    <action selector="easyMode:" destination="4yI-wh-6Yt" eventType="touchUpInside" id="xiL-xt-8e1"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Instead of playing regular 2048, combining" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wgn-6s-luP">
@@ -281,23 +276,22 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DA4-qd-wBj">
-                                <rect key="frame" x="113" y="562" width="189" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sl5-7h-TFA">
+                                <rect key="frame" x="113" y="555" width="189" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Give me the harder version!"/>
                                 <connections>
-                                    <action selector="hardMode:" destination="Ttg-JQ-Pt3" eventType="touchUpInside" id="pud-he-Qdy"/>
-                                    <action selector="hm:" destination="Ttg-JQ-Pt3" eventType="touchUpInside" id="F8x-o2-gw1"/>
-                                    <segue destination="BV1-FR-VrT" kind="show" identifier="HardMode" id="Xmm-7a-BCC"/>
+                                    <action selector="hardMode:" destination="4yI-wh-6Yt" eventType="touchUpInside" id="HPU-i0-Dh6"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="/* add a scroll view through all the professors */" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kQz-uX-Y2n">
-                                <rect key="frame" x="20" y="682" width="375" height="21"/>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DA4-qd-wBj">
+                                <rect key="frame" x="109" y="699" width="210" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                <state key="normal" title="Hidden Button To Get A Segue"/>
+                                <connections>
+                                    <segue destination="BV1-FR-VrT" kind="show" identifier="goToGame" id="FEf-8z-OYa"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <gestureRecognizers/>
@@ -305,16 +299,12 @@
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p9N-eP-nbg" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="Ttg-JQ-Pt3" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-147.82608695652175" y="5.3571428571428568"/>
+            <point key="canvasLocation" x="-357" y="15"/>
         </scene>
     </scenes>
     <resources>
         <image name="bearcatbackground" width="1660" height="3584"/>
         <image name="grid" width="818" height="750"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="cIt-3c-6DA"/>
-    </inferredMetricsTieBreakers>
 </document>

@@ -35,44 +35,7 @@
     self = [super init];
     if(self){
 
-        _boxes = [NSArray arrayWithObjects: _uiiv1, _uiiv2, _uiiv3, _uiiv4,
-                                            _uiiv5, _uiiv6, _uiiv7, _uiiv8,
-                                            _uiiv9, _uiiv10, _uiiv11, _uiiv12,
-                  _uiiv13, _uiiv14, _uiiv15, _uiiv16, nil];
         
-        _easyMode = [NSArray arrayWithObjects:
-                [UIImage imageNamed:@"110williams.png"],
-                [UIImage imageNamed:@"120madden"],
-                [UIImage imageNamed:@"140lander"],
-                [UIImage imageNamed:@"220prakash"],
-                [UIImage imageNamed:@"240moore"],
-                [UIImage imageNamed:@"301weinsc"],
-                [UIImage imageNamed:@"320dmitri"],
-                [UIImage imageNamed:@"350lewis"],
-                [UIImage imageNamed:@"373"],
-                [UIImage imageNamed:@"375lyu"],
-                [UIImage imageNamed:@"471head"],
-                nil];
-        
-        _hardMode = [NSArray arrayWithObjects:
-                [UIImage imageNamed:@"101foreman"],
-                [UIImage imageNamed:@"110williams"],
-                [UIImage imageNamed:@"120moore"],
-                [UIImage imageNamed:@"140lander"],
-                [UIImage imageNamed:@"220prakash"],
-                [UIImage imageNamed:@"240lewis"],
-                [UIImage imageNamed:@"301weinsc"],
-                [UIImage imageNamed:@"320dmitri"],
-                [UIImage imageNamed:@"350kartrik"],
-                [UIImage imageNamed:@"373"],
-                [UIImage imageNamed:@"375lyu"],
-                [UIImage imageNamed:@"471head"],
-                [UIImage imageNamed:@"441Madden"],
-                     nil];
-        
-        _values = [[NSMutableArray alloc] initWithObjects: @-1, @-1, @-1, @-1, @-1, @-1, @-1, @-1, @-1, @-1, @-1, @-1, @-1, @-1, @-1, @-1, nil];
-        
-        _negone = [NSNumber numberWithInt:-1];
     }
     return self;
 }
@@ -80,6 +43,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [_currentMode removeAllObjects];
+    
+    Universe *u = [Universe getSingleton];
 
     // Load the SKScene from 'GameScene.sks'
     GameScene *scene = (GameScene *)[SKScene nodeWithFileNamed:@"GameScene"];
@@ -94,6 +61,54 @@
     
     skView.showsFPS = YES;
     skView.showsNodeCount = YES;
+    
+    _boxes = [NSArray arrayWithObjects: _uiiv1, _uiiv2, _uiiv3, _uiiv4, _uiiv5, _uiiv6, _uiiv7, _uiiv8, _uiiv9, _uiiv10, _uiiv11, _uiiv12, _uiiv13, _uiiv14, _uiiv15, _uiiv16, nil];
+    
+    _easyMode = [NSArray arrayWithObjects:
+                 [UIImage imageNamed:@"110williams"],
+                 [UIImage imageNamed:@"120madden"],
+                 [UIImage imageNamed:@"140lander"],
+                 [UIImage imageNamed:@"220prakash"],
+                 [UIImage imageNamed:@"240moore"],
+                 [UIImage imageNamed:@"301weinsc"],
+                 [UIImage imageNamed:@"320dmitri"],
+                 [UIImage imageNamed:@"350lewis"],
+                 [UIImage imageNamed:@"373"],
+                 [UIImage imageNamed:@"375lyu"],
+                 [UIImage imageNamed:@"471head"],
+                 nil];
+    
+    _hardMode = [NSArray arrayWithObjects:
+                 [UIImage imageNamed:@"101foreman"],
+                 [UIImage imageNamed:@"110williams"],
+                 [UIImage imageNamed:@"120moore"],
+                 [UIImage imageNamed:@"140lander"],
+                 [UIImage imageNamed:@"220prakash"],
+                 [UIImage imageNamed:@"240lewis"],
+                 [UIImage imageNamed:@"301weinsc"],
+                 [UIImage imageNamed:@"320dmitri"],
+                 [UIImage imageNamed:@"350kartrik"],
+                 [UIImage imageNamed:@"373"],
+                 [UIImage imageNamed:@"375lyu"],
+                 [UIImage imageNamed:@"471head"],
+                 [UIImage imageNamed:@"441Madden"],
+                 nil];
+    
+    _values = [[NSMutableArray alloc] initWithObjects: @-1, @-1, @-1, @-1, @-1, @-1, @-1, @-1, @-1, @-1, @-1, @-1, @-1, @-1, @-1, @-1, nil];
+    
+    _negone = [NSNumber numberWithInt:-1];
+    
+    if([u magicNumber]) _currentMode = [[NSMutableArray alloc]
+                        initWithArray:_hardMode copyItems:YES];
+
+    else _currentMode = [[NSMutableArray alloc]
+                        initWithArray:_easyMode copyItems:YES];
+    
+    //NSLog(@"%d", [_currentMode count]);
+    
+    
+    _uiiv0.image = (UIImage*)  _currentMode[[_currentMode count]-1];
+    
     
     
     //spawn first two blocks
@@ -126,21 +141,18 @@
     
 }
 
-//work on this vvvvvvvv
+
 - (void) setImages{
     for(int i = 0; i < 16; i++){
-        NSLog(@"%ld", (long) _values[i]);
         UIImageView* current = (UIImageView*) _boxes[i];
         NSNumber* num1 = (NSNumber*) _values[i];
-        NSComparisonResult n = [num1 compare:_negone];
-        if(n == NSOrderedDescending){
-            NSLog(@"Here%d", i);
+        if([num1 intValue] == -1) current.image = nil;
+        else{
             NSNumber* arrind = (NSNumber*) _values[i];
             int arrint = [arrind intValue];
-            UIImage* newIm = (UIImage*) _easyMode[arrint];
+            UIImage* newIm = (UIImage*) _currentMode[arrint];
             current.image = newIm;
         }
-        else  current.image = nil;
     }
 }
 
@@ -148,6 +160,8 @@
 - (void) collapseBlocks:(int) direction{
     
     /*
+     PSEUDO CODE:
+     
      for(int row = 0; row < 4; row++){
          for(int column = 0; column < 4; column++){
              if(cells[row][column].block == cells[row][column+1].block
@@ -177,7 +191,7 @@
     BOOL marked[4][4];
     BOOL possiblespawns[16];
     BOOL hasBeenSpawned = false;
-    NSNumber* max_val = [NSNumber numberWithInt:0]; //set appropriate for game mode
+    NSUInteger max_val = [_currentMode count];
     NSNumber* currNum, *newNum;
     NSInteger arrayIndexes[4][4];
     NSInteger currentArrInd, currentArrInd2;
@@ -198,7 +212,7 @@
         }
     }
     
-    
+    /*
     //2048 collapsing logic
     for(row = 0; row < 4; row++){
         for(column = 0; column < 4; column++){
@@ -227,6 +241,7 @@
     }
     
     //spawning new tile
+    /*
     for(i = 0; i < 16; i++){
         if(_values[i] == max_val) [self gameComplete];
         if(_values[i] == _negone) possiblespawns[i] = true;
@@ -240,7 +255,7 @@
             [_values replaceObjectAtIndex:r withObject: newNum];
             hasBeenSpawned = true;
         }
-    }
+    }*/
     
     [self setImages];
 
