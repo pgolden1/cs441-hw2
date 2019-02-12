@@ -87,12 +87,15 @@
                  [UIImage imageNamed:@"240lewis"],
                  [UIImage imageNamed:@"301weinsc"],
                  [UIImage imageNamed:@"320dmitri"],
-                 [UIImage imageNamed:@"350kartrik"],
+                 [UIImage imageNamed:@"350kartik"],
                  [UIImage imageNamed:@"373"],
                  [UIImage imageNamed:@"375lyu"],
                  [UIImage imageNamed:@"471head"],
-                 [UIImage imageNamed:@"441Madden"],
-                 nil];
+                 [UIImage imageNamed:@"441madden"],
+                  nil];
+    
+    
+    
     
     _values = [[NSMutableArray alloc] initWithObjects: @-1, @-1, @-1, @-1, @-1, @-1, @-1, @-1, @-1, @-1, @-1, @-1, @-1, @-1, @-1, @-1, nil];
     
@@ -103,8 +106,6 @@
 
     else _currentMode = [[NSMutableArray alloc]
                         initWithArray:_easyMode copyItems:YES];
-    
-    //NSLog(@"%d", [_currentMode count]);
     
     
     _uiiv0.image = (UIImage*)  _currentMode[[_currentMode count]-1];
@@ -212,7 +213,7 @@
         }
     }
     
-    /*
+
     //2048 collapsing logic
     for(row = 0; row < 4; row++){
         for(column = 0; column < 4; column++){
