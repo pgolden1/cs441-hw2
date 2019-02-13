@@ -95,8 +95,6 @@
                   nil];
     
     
-    
-    
     _values = [[NSMutableArray alloc] initWithObjects: @-1, @-1, @-1, @-1, @-1, @-1, @-1, @-1, @-1, @-1, @-1, @-1, @-1, @-1, @-1, @-1, nil];
     
     _negone = [NSNumber numberWithInt:-1];
@@ -138,12 +136,17 @@
 }
 
 
-- (void)gameComplete{
-    
+- (void)gameWin{
+    NSLog(@"You won!");
+}
+
+-(void) gameOver{
+    NSLog(@"Game over!");
 }
 
 
 - (void) setImages{
+    
     for(int i = 0; i < 16; i++){
         UIImageView* current = (UIImageView*) _boxes[i];
         NSNumber* num1 = (NSNumber*) _values[i];
@@ -155,6 +158,36 @@
             current.image = newIm;
         }
     }
+}
+
+-(void) spawnNewTile{
+    BOOL possiblespawns[16];
+    BOOL hasBeenSpawned = false;
+    NSUInteger max_val = [_currentMode count];
+    
+    for(int i = 0; i < 16; i++){
+        if((NSUInteger) _values[i] == max_val) [self gameWin];
+        if(_values[i] == _negone) possiblespawns[i] = true;
+        else possiblespawns[i] = false;
+    }
+    
+    BOOL stillPossible = false;
+    for(int i = 0; i < 16; i++) if(possiblespawns[i]) stillPossible = true;
+    
+    if(stillPossible){
+        int r;
+        NSNumber* newNum;
+        while(!hasBeenSpawned){
+            r = arc4random_uniform(16);
+            if(possiblespawns[r]){
+                newNum = [NSNumber numberWithInt:arc4random_uniform(2)];
+                [_values replaceObjectAtIndex:r withObject: newNum];
+                hasBeenSpawned = true;
+            }
+        }
+    } else [self gameOver];
+    
+     [self setImages];
 }
 
 // make sure this is correct vvvvvvvv
@@ -188,19 +221,17 @@
      spawn random tile
      */
    
-    int i, j, r, row, column;
+    int i, j, row, column, col2, val;
     BOOL marked[4][4];
-    BOOL possiblespawns[16];
-    BOOL hasBeenSpawned = false;
-    NSUInteger max_val = [_currentMode count];
     NSNumber* currNum, *newNum;
     NSInteger arrayIndexes[4][4];
     NSInteger currentArrInd, currentArrInd2;
     
     NSInteger leftarr[4][4] = {{0,1,2,3},{4,5,6,7},{8,9,10,11},{12,13,14,15}};
-    NSInteger downarr[4][4] = {{3,7,11,15},{2,6,10,14},{1,5,9,13},{0,4,8,12}};
-    NSInteger uparr[4][4] = {{12,8,4,0},{13,9,5,1},{14,10,6,2},{15,11,7,3}};
+    NSInteger uparr[4][4] = {{3,7,11,15},{2,6,10,14},{1,5,9,13},{0,4,8,12}};
+    NSInteger downarr[4][4] = {{12,8,4,0},{13,9,5,1},{14,10,6,2},{15,11,7,3}};
     NSInteger rightarr[4][4] = {{15,14,13,12},{11,10,9,8},{7,6,5,4},{3,2,1,0}};
+    
     
     //Initializer loops
     for(i = 0; i < 4; i++){
@@ -212,51 +243,51 @@
             marked[i][j] = false;
         }
     }
-    
 
     //2048 collapsing logic
     for(row = 0; row < 4; row++){
-        for(column = 0; column < 4; column++){
-            currentArrInd = arrayIndexes[row][column];
-            currentArrInd2 = arrayIndexes[row][column+1];
+        for(column = 0; column < 3; column++){
             
-           if(_values[currentArrInd] == _values[currentArrInd2] && !marked[row][column]){
+            for(col2 = column+1; col2 <4; col2++){
+                if([_values[arrayIndexes[row][col2]] intValue] != -1){
+                    break;
+                }
+            }
+            
+            currentArrInd = arrayIndexes[row][column];
+            currentArrInd2 = arrayIndexes[row][col2];
+            
+            int int1 = [(NSNumber*) _values[currentArrInd] intValue];
+            int int2 = [(NSNumber*) _values[currentArrInd2] intValue];
+            
+           if(int1 == int2 && int1 != -1 && !marked[row][column]){
+               //NSLog(@"Merging %d %d %d with %d %d %d", row, column, int1, row, col2, int2);
                currNum = (NSNumber*) _values[currentArrInd];
-               int val = [currNum intValue];
+               val = [currNum intValue];
                newNum = [NSNumber numberWithInt:val + 1];
                [_values replaceObjectAtIndex:currentArrInd withObject: newNum];
+               [_values replaceObjectAtIndex:currentArrInd2 withObject: _negone];
                
                marked[row][column] = true;
-               
-               for(i = column + 2; i < 4; i++){
-                   currNum = (NSNumber*) _values[arrayIndexes[row][i]];
-                   val = [currNum intValue];
-                   newNum = [NSNumber numberWithInt:val];
-                   [_values replaceObjectAtIndex:arrayIndexes[row][i-1] withObject: newNum];
-                   
-                   [_values replaceObjectAtIndex:arrayIndexes[row][i] withObject: _negone];
-
-               }
+           }
+        }
+    }
+    
+    for(int i = 0; i < 4; i++){
+        for(int j = 0; j < 4; j++){
+            for(int k = 0; k < 3; k++){
+                NSNumber* n1 = (NSNumber*) _values[arrayIndexes[j][k]];
+                NSNumber* n2 = (NSNumber*) _values[arrayIndexes[j][k+1]];
+                
+                if([n1 intValue] == -1){[_values replaceObjectAtIndex:arrayIndexes[j][k] withObject: n2];
+                
+                [_values replaceObjectAtIndex:arrayIndexes[j][k+1] withObject: _negone];
+                }
             }
         }
     }
     
-    //spawning new tile
-    /*
-    for(i = 0; i < 16; i++){
-        if(_values[i] == max_val) [self gameComplete];
-        if(_values[i] == _negone) possiblespawns[i] = true;
-        else possiblespawns[i] = false;
-    }
-    
-    while(!hasBeenSpawned){
-        r = arc4random_uniform(16);
-        if(possiblespawns[r]){
-            newNum = [NSNumber numberWithInt:arc4random_uniform(2)];
-            [_values replaceObjectAtIndex:r withObject: newNum];
-            hasBeenSpawned = true;
-        }
-    }*/
+    [self spawnNewTile];
     
     [self setImages];
 

@@ -40,8 +40,10 @@
 @property (nonatomic, strong) NSArray* hardMode;
 @property (nonatomic, strong) NSMutableArray* currentMode;
 
+-(void) spawnNewTile;
 - (void) collapseBlocks: (int) direction;
-- (void) gameComplete;
+- (void) gameWin;
+- (void) gameOver;
 - (void) setImages;
 - (IBAction) pressLeft: (UIButton*) sender;
 - (IBAction) pressDown: (UIButton*) sender;
