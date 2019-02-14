@@ -148,13 +148,6 @@
                                     <action selector="pressRight:" destination="BV1-FR-VrT" eventType="touchUpInside" id="haE-mw-LYu"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="You may either use the buttons or swipe gestures" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dm5-xz-Omv">
-                                <rect key="frame" x="17" y="723" width="378" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Goal: reach this tile =&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GLb-rY-8dX">
                                 <rect key="frame" x="91" y="132" width="172" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -194,7 +187,7 @@
                 <exit id="NN8-xT-m1e" userLabel="Exit" sceneMemberID="exit"/>
                 <swipeGestureRecognizer direction="right" id="N1D-UI-YdC"/>
             </objects>
-            <point key="canvasLocation" x="730.43478260869574" y="5.3571428571428568"/>
+            <point key="canvasLocation" x="559" y="15"/>
         </scene>
         <!--Main View Controller-->
         <scene sceneID="2wo-I1-TBW">
@@ -211,15 +204,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UiY-bu-vHK">
-                                <rect key="frame" x="119" y="517" width="177" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <accessibility key="accessibilityConfiguration" identifier="EasyMode" label="EasyMode"/>
-                                <state key="normal" title="I want the regular version!"/>
-                                <connections>
-                                    <action selector="easyMode:" destination="4yI-wh-6Yt" eventType="touchUpInside" id="xiL-xt-8e1"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Instead of playing regular 2048, combining" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wgn-6s-luP">
                                 <rect key="frame" x="20" y="212" width="375" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -276,20 +260,29 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sl5-7h-TFA">
-                                <rect key="frame" x="113" y="555" width="189" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Give me the harder version!"/>
-                                <connections>
-                                    <action selector="hardMode:" destination="4yI-wh-6Yt" eventType="touchUpInside" id="HPU-i0-Dh6"/>
-                                </connections>
-                            </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DA4-qd-wBj">
                                 <rect key="frame" x="109" y="699" width="210" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Hidden Button To Get A Segue"/>
                                 <connections>
                                     <segue destination="BV1-FR-VrT" kind="show" identifier="goToGame" id="FEf-8z-OYa"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UiY-bu-vHK">
+                                <rect key="frame" x="119" y="578" width="177" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <accessibility key="accessibilityConfiguration" identifier="EasyMode" label="EasyMode"/>
+                                <state key="normal" title="I want the regular version!"/>
+                                <connections>
+                                    <action selector="easyMode:" destination="4yI-wh-6Yt" eventType="touchUpInside" id="xiL-xt-8e1"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sl5-7h-TFA">
+                                <rect key="frame" x="113" y="616" width="189" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Give me the harder version!"/>
+                                <connections>
+                                    <action selector="hardMode:" destination="4yI-wh-6Yt" eventType="touchUpInside" id="HPU-i0-Dh6"/>
                                 </connections>
                             </button>
                         </subviews>

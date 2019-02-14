@@ -137,11 +137,23 @@
 
 
 - (void)gameWin{
-    NSLog(@"You won!");
+    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"You won! Congratulations!" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+        handler:^(UIAlertAction * action) {}];
+    
+    [alert addAction:defaultAction];
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 -(void) gameOver{
-    NSLog(@"Game over!");
+    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Game over!" message:@"No more moves can be made!" preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction * action) {}];
+    
+    [alert addAction:defaultAction];
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 
@@ -158,6 +170,7 @@
             current.image = newIm;
         }
     }
+    
 }
 
 -(void) spawnNewTile{
@@ -221,8 +234,8 @@
      spawn random tile
      */
    
-    int i, j, row, column, col2, val;
-    BOOL marked[4][4];
+    int i, j, row, column, col2, currentcol, val;
+    BOOL validmove = false, marked[4][4];
     NSNumber* currNum, *newNum;
     NSInteger arrayIndexes[4][4];
     NSInteger currentArrInd, currentArrInd2;
@@ -243,33 +256,39 @@
             marked[i][j] = false;
         }
     }
+    
+    NSArray* before = [[NSArray alloc]
+                       initWithArray:_values copyItems:YES];
 
     //2048 collapsing logic
     for(row = 0; row < 4; row++){
-        for(column = 0; column < 3; column++){
-            
-            for(col2 = column+1; col2 <4; col2++){
-                if([_values[arrayIndexes[row][col2]] intValue] != -1){
-                    break;
+        for(currentcol = 0; currentcol < 3; currentcol++){
+            for(column = currentcol; column < 3; column++){
+                
+                for(col2 = column+1; col2 <4; col2++){
+                    if([_values[arrayIndexes[row][col2]] intValue] != -1){
+                        break;
+                    }
                 }
+                
+                
+                currentArrInd = arrayIndexes[row][column];
+                currentArrInd2 = arrayIndexes[row][col2];
+                
+                int int1 = [(NSNumber*) _values[currentArrInd] intValue];
+                int int2 = [(NSNumber*) _values[currentArrInd2] intValue];
+                
+               if(int1 == int2 && int1 != -1 && !marked[row][column]){
+
+                   currNum = (NSNumber*) _values[currentArrInd];
+                   val = [currNum intValue];
+                   newNum = [NSNumber numberWithInt:val + 1];
+                   [_values replaceObjectAtIndex:currentArrInd withObject: newNum];
+                   [_values replaceObjectAtIndex:currentArrInd2 withObject: _negone];
+                   
+                   marked[row][column] = true;
+               }
             }
-            
-            currentArrInd = arrayIndexes[row][column];
-            currentArrInd2 = arrayIndexes[row][col2];
-            
-            int int1 = [(NSNumber*) _values[currentArrInd] intValue];
-            int int2 = [(NSNumber*) _values[currentArrInd2] intValue];
-            
-           if(int1 == int2 && int1 != -1 && !marked[row][column]){
-               //NSLog(@"Merging %d %d %d with %d %d %d", row, column, int1, row, col2, int2);
-               currNum = (NSNumber*) _values[currentArrInd];
-               val = [currNum intValue];
-               newNum = [NSNumber numberWithInt:val + 1];
-               [_values replaceObjectAtIndex:currentArrInd withObject: newNum];
-               [_values replaceObjectAtIndex:currentArrInd2 withObject: _negone];
-               
-               marked[row][column] = true;
-           }
         }
     }
     
@@ -287,7 +306,13 @@
         }
     }
     
-    [self spawnNewTile];
+    for(int i = 0; i < 16; i++){
+        int beforenum = [(NSNumber*) before[i] intValue];
+        int afternum = [(NSNumber*) _values[i] intValue];
+        if(beforenum != afternum) validmove = true;
+    }
+    
+    if(validmove) [self spawnNewTile];
     
     [self setImages];
 
@@ -299,7 +324,8 @@
 }
 
 - (IBAction)pressDown:(UIButton *)sender {
-    [self collapseBlocks:1];
+    [self gameWin];
+    //[self collapseBlocks:1];
 }
 
 - (IBAction)pressUp:(UIButton *)sender {
